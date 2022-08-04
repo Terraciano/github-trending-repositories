@@ -17,13 +17,11 @@ import { getSavedRepos } from "../utils/getSavedRepos";
 import { getLanguages } from "../utils/getLanguages";
 import { getFilteredResults } from "../utils/getFilteredResults";
 import { IconMoonStars, IconSun } from "@tabler/icons";
-import { normalizeData } from "../utils/normalizeData";
 
 export const AppWrapper: FunctionComponent = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const { items, error } = useGithubData();
-  const savedRepos = getSavedRepos(normalizeData(items));
-  const normalizedItems = normalizeData(items);
+  const savedRepos = getSavedRepos(items);
 
   const [showSavedResults, setShowSavedResults] = useState<boolean>(false);
 
@@ -40,9 +38,7 @@ export const AppWrapper: FunctionComponent = () => {
           handleApplyFiltersCta={() => setIsNavigationHidden(true)}
           isHidden={isNavigationHidden}
           onSelectChange={(language) => setLanguage(language)}
-          languages={getLanguages(
-            showSavedResults ? savedRepos : normalizedItems
-          )}
+          languages={getLanguages(showSavedResults ? savedRepos : items)}
           onClick={() => setShowSavedResults(!showSavedResults)}
         />
       }
@@ -91,7 +87,7 @@ export const AppWrapper: FunctionComponent = () => {
         <CardList
           onSave={() => setForceUpdate(!forceUpdate)}
           items={getFilteredResults(
-            showSavedResults ? savedRepos : normalizedItems,
+            showSavedResults ? savedRepos : items,
             language
           )}
         />

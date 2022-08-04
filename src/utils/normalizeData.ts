@@ -1,6 +1,8 @@
 import { Repository, responseItem } from "../types/githubApi.types";
 
-export const normalizeData = (items: Array<responseItem> | undefined) => {
+export const normalizeData = (
+  items: Array<responseItem> | undefined
+): Array<Repository> | undefined => {
   if (!items) return undefined;
   return items.map((repository) => {
     return {
@@ -12,5 +14,5 @@ export const normalizeData = (items: Array<responseItem> | undefined) => {
       stars: repository.stargazers_count,
       id: repository.id,
     };
-  }) as Array<Repository>;
+  });
 };
