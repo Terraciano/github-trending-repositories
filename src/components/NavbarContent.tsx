@@ -45,8 +45,10 @@ export const NavbarContent: FunctionComponent<NavbarContentProps> = ({
         />
       </Navbar.Section>
       <Navbar.Section sx={{ display: "flex" }} m={"xs"}>
-        <Checkbox onClick={onClick}></Checkbox>
-        <Text ml={5}>Show saved results only</Text>
+        <label style={{ display: "flex" }}>
+          <Text mr={5}>Show saved results only</Text>
+          <Checkbox onClick={onClick}></Checkbox>
+        </label>
       </Navbar.Section>
       <Navbar.Section>
         <MediaQuery largerThan="sm" styles={{ display: "none" }}>
