@@ -19,10 +19,6 @@ export const CardList: FunctionComponent<CardListProps> = ({
     storedResults ? JSON.parse(storedResults) : []
   );
 
-  useEffect(() => {
-    onSave();
-  }, [savedRepos]);
-
   const handleStarClick = (value: number) => {
     if (!items) return;
 
@@ -37,6 +33,7 @@ export const CardList: FunctionComponent<CardListProps> = ({
   };
 
   useEffect(() => {
+    onSave();
     if (savedRepos)
       return localStorage.setItem(
         "savedRepositories",

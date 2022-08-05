@@ -52,7 +52,7 @@ export const AppWrapper: FunctionComponent = () => {
             <MediaQuery largerThan="sm" styles={{ display: "none" }}>
               <Burger
                 opened={!isNavigationHidden}
-                onClick={() => setIsNavigationHidden((o) => !o)}
+                onClick={() => setIsNavigationHidden((isHidden) => !isHidden)}
                 size="sm"
                 color={theme.colors.gray[6]}
               />
